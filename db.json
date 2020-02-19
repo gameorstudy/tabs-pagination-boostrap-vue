@@ -1,0 +1,52 @@
+{
+    "data": [
+        {
+            "storage": 256,
+            "brand": "black",
+            "price": 2499,
+            "id": 1
+        },
+        {
+            "storage": 128,
+            "brand": "red",
+            "price": 2199,
+            "id": 2
+        },
+        {
+            "storage": 128,
+            "brand": "blue",
+            "price": 2399,
+            "id": 3
+        },
+        {
+            "storage": 128,
+            "brand": "black",
+            "price": 1799,
+            "id": 4
+        },
+        {
+            "storage": 256,
+            "brand": "white",
+            "price": 1899,
+            "id": 5
+        },
+        {
+            "storage": 256,
+            "brand": "blue",
+            "price": 3089,
+            "id": 6
+        },
+        {
+            "storage": 256,
+            "brand": "red",
+            "price": 2099,
+            "id": 7
+        },
+        {
+            "storage": 128,
+            "brand": "white",
+            "price": 1599,
+            "id": 8
+        }
+    ]
+}
