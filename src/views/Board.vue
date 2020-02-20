@@ -12,76 +12,28 @@
 
     <div class="box-view mt-3">
       <template v-if="initValue === 0">
-        <div
-          class="items-view"
-          v-for="index in Math.ceil(rows / perPage)"
-          :key="index"
-        >
-          <template v-if="index === currentPage">
-            <div
-              class="item"
-              v-for="(item, secIndex) in dataset.slice(
-                perPage * (index - 1),
-                perPage * index
-              )"
-              :key="secIndex"
-            >
-              <p class="storage">{{ item.storage }}GB</p>
-              <p class="brand">{{ item.brand }}</p>
-              <p class="price">
-                ￥ <small>{{ item.price }}</small>
-              </p>
-            </div>
-          </template>
-        </div>
+        <Product
+          :rows="rows"
+          :perPage="perPage"
+          :currentPage="currentPage"
+          :dataset="dataset"
+        ></Product>
       </template>
       <template v-if="initValue === 1">
-        <div
-          class="items-view"
-          v-for="index in Math.ceil(priceList.length / perPage)"
-          :key="index"
-        >
-          <template v-if="index === currentPage">
-            <div
-              class="item"
-              v-for="(item, secIndex) in priceList.slice(
-                perPage * (index - 1),
-                perPage * index
-              )"
-              :key="secIndex"
-            >
-              <p class="storage">{{ item.storage }}GB</p>
-              <p class="brand">{{ item.brand }}</p>
-              <p class="price">
-                ￥ <small>{{ item.price }}</small>
-              </p>
-            </div>
-          </template>
-        </div>
+        <Product
+          :rows="priceList.length"
+          :perPage="perPage"
+          :currentPage="currentPage"
+          :dataset="priceList"
+        ></Product>
       </template>
       <template v-if="initValue === 2">
-        <div
-          class="items-view"
-          v-for="index in Math.ceil(storageList.length / perPage)"
-          :key="index"
-        >
-          <template v-if="index === currentPage">
-            <div
-              class="item"
-              v-for="(item, secIndex) in storageList.slice(
-                perPage * (index - 1),
-                perPage * index
-              )"
-              :key="secIndex"
-            >
-              <p class="storage">{{ item.storage }}GB</p>
-              <p class="brand">{{ item.brand }}</p>
-              <p class="price">
-                ￥ <small>{{ item.price }}</small>
-              </p>
-            </div>
-          </template>
-        </div>
+        <Product
+          :rows="storageList.length"
+          :perPage="perPage"
+          :currentPage="currentPage"
+          :dataset="storageList"
+        ></Product>
       </template>
     </div>
     <div class="overflow-auto mt-3">
@@ -99,8 +51,12 @@
 
 <script>
 import { mapState } from 'vuex'
+import Product from '@/components/Product.vue'
 
 export default {
+  components: {
+    Product
+  },
   data() {
     return {
       tabItems: ['brand', 'price', 'storage'],
@@ -210,24 +166,6 @@ export default {
     max-height: 760px;
     overflow: hidden;
   }
-
-  .item {
-    width: 240px;
-    height: 240px;
-    border: none;
-    float: left;
-    margin-bottom: 10px;
-    background-color: azure;
-    cursor: pointer;
-  }
-
-  .item:nth-child(2n + 1) {
-    margin-right: 50px;
-  }
-
-  .item:nth-child(2n) {
-    margin-left: 50px;
-  }
 }
 
 @media screen and (min-width: 769px) {
@@ -239,81 +177,15 @@ export default {
     overflow: hidden;
   }
 
-  .items-view {
+  /* .items-view {
     width: 100%;
     float: left;
-  }
-
-  .item {
-    width: 160px;
-    height: 160px;
-    border: none;
-    float: left;
-    margin-bottom: 10px;
-    background-color: azure;
-    cursor: pointer;
-  }
-
-  .item:nth-child(3n + 1) {
-    margin-right: 25px;
-  }
-
-  .item:nth-child(3n + 2) {
-    margin-left: 25px;
-    margin-right: 25px;
-  }
-
-  .item:nth-child(3n) {
-    margin-left: 25px;
-  }
-
-  .item > p {
-    width: 100%;
-    /* margin: 0; */
-  }
+  } */
 }
 
 .view {
   width: 600px;
   height: auto;
   margin: 0 auto;
-}
-
-.item:hover {
-  box-shadow: 0 0 10px#ccc;
-  transform: translateX(1px);
-}
-
-.item p.storage {
-  width: auto;
-  height: 1.5rem;
-  margin-top: 20px;
-  margin-right: 30px;
-  color: black;
-  font-size: 1.2rem;
-  line-height: 100%;
-  text-align: right;
-  font-weight: bold;
-}
-
-.item p.brand {
-  color: green;
-  width: auto;
-  height: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  text-align: center;
-}
-
-.item p.price {
-  width: 100%;
-  height: 1rem;
-  margin-bottom: 10px;
-  line-height: 1rem;
-  text-align: center;
-}
-
-.item p.price small {
-  color: tomato;
 }
 </style>
